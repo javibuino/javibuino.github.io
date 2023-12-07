@@ -1,57 +1,39 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const keyboard = document.getElementById("keyboard");
-  const waveTypeSelect = document.getElementById("waveType");
-  const volumeSlider = document.getElementById("volume");
-  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+document.addEventListener('DOMContentLoaded', function () {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-  const octave = 1;
-  const whiteKeys = ["C", "D", "E", "F", "G", "A", "B"];
-  const blackKeys = ["C#", "D#", "", "F#", "G#", "A#", ""];
+    const lfoSlider = document.getElementById('lfo-slider');
+    const envelopeSlider = document.getElementById('envelope-slider');
 
-  for (let i = 0; i < whiteKeys.length; i++) {
-    createKey("white", whiteKeys[i], octave);
-    if (blackKeys[i] !== "") {
-      createKey("black", blackKeys[i], octave);
-    }
-  }
+    // Add sliders for other parameters and get their references
 
-  function createKey(type, note, octave) {
-    const key = document.createElement("div");
-    key.className = `key ${type}`;
-    key.dataset.note = `${note}${octave}`;
-    key.addEventListener("mousedown", () => playSound(key.dataset.note));
-    keyboard.appendChild(key);
-  }
+    const playButton = document.getElementById('play-button');
 
-  function playSound(note) {
-    const oscillator = audioContext.createOscillator();
-    oscillator.type = waveTypeSelect.value;
-    oscillator.frequency.setValueAtTime(noteToFrequency(note), audioContext.currentTime);
-    
-    const gainNode = audioContext.createGain();
-    gainNode.connect(audioContext.destination);
-    oscillator.connect(gainNode);
+    playButton.addEventListener('click', function () {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
 
-    gainNode.gain.setValueAtTime(volumeSlider.value / 100, audioContext.currentTime);
+        oscillator.type = 'sine'; // Change the waveform as needed
 
-    oscillator.start();
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1);
+        // Connect the oscillator to the gain node
+        oscillator.connect(gainNode);
 
-    oscillator.stop(audioContext.currentTime + 1);
-  }
+        // Connect the gain node to the audio context's destination (speakers)
+        gainNode.connect(audioContext.destination);
 
-  function noteToFrequency(note) {
-    const A4 = 440;
-    const semitoneRatio = 2 ** (1 / 12);
-    const distanceFromA4 = whiteKeys.indexOf(note[0]) + (note[1] - 4) * 7;
-    return A4 * (semitoneRatio ** distanceFromA4);
-  }
+        // Set initial parameter values
+        oscillator.frequency.value = 440; // Initial frequency
+        oscillator.detune.value = lfoSlider.value * 100; // Adjust detune with LFO
 
-  waveTypeSelect.addEventListener("change", () => {
-    // Implementar lógica para cambiar el tipo de onda del sintetizador.
-  });
+        // Adjust gain with envelope
+        const attackTime = 0.1;
+        const releaseTime = 0.1;
 
-  volumeSlider.addEventListener("input", () => {
-    // Implementar lógica para ajustar el volumen del sintetizador.
-  });
+        gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+        gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + attackTime);
+        gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + attackTime + releaseTime);
+
+        // Start and stop the oscillator
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + attackTime + releaseTime);
+    });
 });
