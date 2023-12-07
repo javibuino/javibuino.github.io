@@ -14,7 +14,7 @@ body {
 }
 
 .key {
-  width: 15vw; /* Ajusta el ancho de las teclas según el ancho de la pantalla */
+  flex: 1;
   height: 8vh; /* Ajusta la altura de las teclas según el alto de la pantalla */
   background-color: #fff;
   border: 1px solid #999;
@@ -26,12 +26,12 @@ body {
 }
 
 .black {
-  width: 10vw; /* Ajusta el ancho de las teclas negras según el ancho de la pantalla */
-  height: 6vh; /* Ajusta la altura de las teclas negras según el alto de la pantalla */
+  width: 60%; /* Ajusta el ancho de las teclas negras */
+  height: 60%; /* Ajusta la altura de las teclas negras */
   background-color: #000;
   position: relative;
-  margin-left: -5vw; /* Alinea las teclas negras correctamente */
-  margin-right: -5vw;
+  margin-left: -30%; /* Alinea las teclas negras correctamente */
+  margin-right: -30%;
   z-index: 1;
 }
 
