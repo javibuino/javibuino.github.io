@@ -4,14 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const volumeSlider = document.getElementById("volume");
   const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-  const octaves = 2;
+  const octave = 1;
   const whiteKeys = ["C", "D", "E", "F", "G", "A", "B"];
   const blackKeys = ["C#", "D#", "F#", "G#", "A#"];
 
-  for (let i = 0; i < octaves; i++) {
-    whiteKeys.forEach(note => createKey("white", note, i));
-    blackKeys.forEach(note => createKey("black", note, i));
-  }
+  whiteKeys.forEach(note => createKey("white", note, octave));
+  blackKeys.forEach(note => createKey("black", note, octave));
 
   function createKey(type, note, octave) {
     const key = document.createElement("div");
