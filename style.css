@@ -14,9 +14,23 @@ body {
 
 .key {
   width: 30px;
-  height: 100px;
-  background-color: #ccc;
+  height: 150px; /* Ajusta la altura para que se vea más parecido a las teclas de un piano */
+  background-color: #fff;
   border: 1px solid #999;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.black {
+  width: 20px; /* Ajusta el ancho de las teclas negras */
+  height: 100px;
+  background-color: #000;
+  position: relative;
+  margin-left: -10px; /* Alinea las teclas negras correctamente */
+  margin-right: -10px;
+  z-index: 1;
 }
 
 #controls {
