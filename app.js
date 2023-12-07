@@ -1,7 +1,8 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const keyboard = document.getElementById("keyboard");
   const waveTypeSelect = document.getElementById("waveType");
   const volumeSlider = document.getElementById("volume");
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
   const octaves = 2;
   const whiteKeys = ["C", "D", "E", "F", "G", "A", "B"];
@@ -16,13 +17,32 @@ document.addEventListener("DOMContentLoaded", function() {
     const key = document.createElement("div");
     key.className = `key ${type}`;
     key.dataset.note = `${note}${octave}`;
-    key.addEventListener("click", () => playSound(key.dataset.note));
+    key.addEventListener("mousedown", () => playSound(key.dataset.note));
     keyboard.appendChild(key);
   }
 
   function playSound(note) {
-    // Implementar lógica de reproducción de sonido según la nota seleccionada.
-    // Puedes usar librerías como Tone.js para simplificar esto.
+    const oscillator = audioContext.createOscillator();
+    oscillator.type = waveTypeSelect.value;
+    oscillator.frequency.setValueAtTime(noteToFrequency(note), audioContext.currentTime);
+    
+    const gainNode = audioContext.createGain();
+    gainNode.connect(audioContext.destination);
+    oscillator.connect(gainNode);
+
+    gainNode.gain.setValueAtTime(volumeSlider.value / 100, audioContext.currentTime);
+
+    oscillator.start();
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1);
+
+    oscillator.stop(audioContext.currentTime + 1);
+  }
+
+  function noteToFrequency(note) {
+    const A4 = 440;
+    const semitoneRatio = 2 ** (1 / 12);
+    const distanceFromA4 = whiteKeys.indexOf(note[0]) + (note[1] - 4) * 7;
+    return A4 * (semitoneRatio ** distanceFromA4);
   }
 
   waveTypeSelect.addEventListener("change", () => {
