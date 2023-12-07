@@ -6,10 +6,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const octave = 1;
   const whiteKeys = ["C", "D", "E", "F", "G", "A", "B"];
-  const blackKeys = ["C#", "D#", "F#", "G#", "A#"];
+  const blackKeys = ["C#", "D#", "", "F#", "G#", "A#", ""];
 
-  whiteKeys.forEach(note => createKey("white", note, octave));
-  blackKeys.forEach(note => createKey("black", note, octave));
+  for (let i = 0; i < whiteKeys.length; i++) {
+    createKey("white", whiteKeys[i], octave);
+    if (blackKeys[i] !== "") {
+      createKey("black", blackKeys[i], octave);
+    }
+  }
 
   function createKey(type, note, octave) {
     const key = document.createElement("div");
