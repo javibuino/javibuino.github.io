@@ -1,5 +1,5 @@
 const dropdownButton = document.querySelector(".menubutton");
-const dropdownMenu = document.querySelector(".menu");
+const dropdownMenu = document.querySelector(".ul-list");
 
 dropdownButton.addEventListener("click", () => {
   dropdownMenu.classList.toggle("show");
