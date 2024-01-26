@@ -1,0 +1,865 @@
+img {
+
+    max-width: 100%;
+
+    align: center;  
+
+}
+
+
+
+* {
+
+    box-sizing: border-box;
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+
+
+body {
+
+    font-family: sans-serif;
+
+    font-size: 16pt;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+
+nav {
+
+    background: rgb(0, 0, 0);
+
+    padding: 1em;
+
+}
+
+
+
+ul {
+
+    list-style-type: none;
+
+}
+
+
+
+.salto {
+
+    height: 20px;
+
+    background-color: #ffffff;
+
+} 
+
+
+
+.textoCuerpo {
+
+    font-size: 16pt;
+
+    margin: 0;
+
+    padding: 0;
+
+    margin-top: 20px;
+
+    margin-left: 1em;
+
+    margin-right: 1em;
+
+    max-width: 100vw;
+
+    text-align: left;
+
+    font-family: Arial, sans-serif;
+
+    bottom: 0;
+
+}
+
+
+
+.textoCentrado {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 16pt;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+}
+
+
+
+.foto-banner {
+
+    margin-top: 20px; /* Ajusta el margen superior según tu preferencia */
+
+}
+
+
+
+a,
+
+.logo {
+
+    color: white;
+
+    text-decoration: none;
+
+}
+
+
+
+a:hover {
+
+    text-decoration: none;
+
+}
+
+
+
+.menu li {
+
+    font-size: 16pt;
+
+    padding: 1em;
+
+    white-space: nowrap;
+
+}
+
+
+
+.item.active {
+
+    display: block;
+
+}
+
+
+
+/* Mobile menu */
+
+.menu {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+
+.ul-list {
+
+    display: none;
+
+}
+
+
+
+.menubutton {
+
+    text-align: center;
+
+}
+
+
+
+.toogle {
+
+    order: 0;
+
+}
+
+
+
+.toggle {
+
+    flex: 1;
+
+    text-align: right;
+
+}
+
+
+
+.menu-item.button {
+
+    order: 1;
+
+}
+
+
+
+.menu-item {
+
+    width: 100%;
+
+    text-align: center;
+
+    order: 2;
+
+}
+
+
+
+.button {
+
+    border-bottom: 2px rgb(0, 0, 0) solid;
+
+}
+
+
+
+.button a {
+
+    border-radius: 10px;
+
+    padding: 7.5px 15px;
+
+    background: rgb(0, 0, 0);
+
+    border: 3px rgb(255, 255, 255) solid;
+
+}
+
+
+
+.button a:hover {
+
+    text-decoration: none;
+
+    background: rgb(0, 0, 0);
+
+    border-color: rgb(0, 0, 0);
+
+}
+
+
+
+/* Tablet menu */
+
+
+
+@media all and (min-width: 37.5em) {
+
+    .logo {
+
+        flex: 1;
+
+        order: 0;
+
+    }
+
+   .menu-item.button {
+
+        width: auto;
+
+        border-bottom: 0;
+
+    }
+
+    .menu-item {
+
+        width: auto;
+
+        order: 1;
+
+    }
+
+    .button {
+
+        order: 2;
+
+    }
+
+    .menu li.button {
+
+        padding-right: 0;
+
+    }
+
+}
+
+
+
+
+
+.video-containerX {
+
+    position: relative;
+
+    aspect-ratio: 16/9; /* Proporción 16:9 para videos */
+
+    margin: 0 auto;
+
+    max-width: 25em;
+
+    box-shadow: 4px 8px 20px 0.5px rgba(0, 0, 0, 0.5);
+
+    overflow: hidden;
+
+}
+
+
+
+.video-containerX iframe {
+
+    width: 100%; /* El video ocupará el 100% del contenedor */
+
+    height: 100%; /* Esto mantendrá la proporción original del video */
+
+}
+
+
+
+
+
+.video-container {
+
+    position: relative;
+
+    padding-bottom: 56.25%; /* Proporción 16:9 para videos */
+
+    height: 0;
+
+    overflow: hidden;
+
+}
+
+
+
+.video-container iframe {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%; /* El video ocupará el 100% del contenedor */
+
+    height: 100%; /* Esto mantendrá la proporción original del video */
+
+}
+
+
+
+.social-links {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start; /* Alinea los elementos en la parte superior del contenedor */
+
+    height: 100%;
+
+    margin-bottom: 10px;
+
+    margin-top: 15px;
+
+}
+
+
+
+.social-links a {
+
+    margin: 2px; /* Espacio horizontal entre enlaces */
+
+}
+
+
+
+.social-links img {
+
+    width: 100px; /* Ancho de las imágenes */
+
+    height: auto; /* Altura automática para mantener la proporción */
+
+}
+
+
+
+.contenedorBlog {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 20px; /* Espaciado entre los botones */
+
+  padding: 20px;
+
+}
+
+
+
+.botonBlog {
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  padding: 0;
+
+  background-color: #000;
+
+  overflow: hidden;
+
+  border: 4px solid black;
+
+  border-radius: 10px;
+
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  width: 45%;
+
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.5); /* Añadir sombra difuminada siempre */
+
+}
+
+
+
+.botonBlog img {
+
+  width: 100%;
+
+  height: auto;
+
+  border-radius: 10px 10px 0 0;
+
+}
+
+
+
+.botonBlog:hover {
+
+  background-color: #45a049;
+
+  transform: scale(1.05);
+
+}
+
+
+
+
+
+.contenedorBlog-flex {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+
+
+.fotosBlogX {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: space-evenly; /* Cambiado de 'center' a 'space-evenly' para asegurar espacio entre las imágenes */
+
+}
+
+
+
+.fotosBlogX img {
+
+    width: 48%; /* Cambiado de '50%' para dejar espacio entre las imágenes */
+
+    max-width: calc(50% -10px); /* Cambiado de 'calc(50% - 10px)' para ocupar el 100% del contenedor */
+
+    object-fit: cover;
+
+    margin: 5px;
+
+    box-sizing: border-box;
+
+}
+
+
+
+/* Ajustes para pantallas más pequeñas */
+
+@media (max-width: 768px) {
+
+    .fotosBlogX img {
+
+        width: 48%; /* Cambiado de '50%' para ocupar el 98% del contenedor en pantallas más pequeñas */
+
+        max-width: calc(50% - 10px); /* Eliminado 'max-width' para que ocupe todo el ancho */
+
+    }
+
+}
+
+
+
+
+
+.fotosBlog {
+
+    display: flex;
+
+    justify-content: center; /* Centra horizontalmente */
+
+    align-items: center; /* Centra verticalmente */
+
+    /* 100% del alto del viewport */
+
+}
+
+
+
+.fotosBlog img {
+
+    width: 100%;
+
+    height: auto;
+
+    object-fit: cover;
+
+    margin: 5px;
+
+    max-width: 100%;
+
+    box-sizing: border-box;
+
+}
+
+
+
+.textoBlog {
+
+    margin-top: 20px;
+
+    text-align: left;
+
+}
+
+
+
+.videosBlog {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow: hidden;
+
+    padding-bottom: 56.25%;
+
+    position: relative;
+
+    height: 0;
+
+}
+
+
+
+.videosBlog iframe {
+
+    width: 100%;
+
+    height: 100%;
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+}
+
+
+
+#spotify-container {
+
+    position: relative;
+
+    width: 90%; /* Ajusta el ancho según tus preferencias */
+
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+
+    aspect-ratio: 16/9; /* Proporción 16:9 para videos */
+
+    max-width: 18em;
+
+    margin-top: 1em;
+
+    margin-bottom: 1em; 
+
+}
+
+
+
+#spotify-container iframe {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+
+/* Estilos para el banner de aviso */
+
+#avisoBanner {
+
+  display: none;
+
+  position: fixed;
+
+  bottom: 0;
+
+  left: 0;
+
+  width: 100%;
+
+  padding: 10px;
+
+  background-color: rgba(25, 25, 25, 0.85); /* Color de fondo rojo claro (puedes ajustarlo) */
+
+  color: white; /* Color de texto rojo oscuro (puedes ajustarlo) */
+
+  text-align: center;
+
+  z-index: 1000;
+
+}
+
+
+
+/* Estilos para el botón "Entendido" */
+
+#avisoBanner button {
+
+  display: block;
+
+  margin: 10px auto; /* Centrar el botón horizontalmente */
+
+  padding: 5px 10px;
+
+  background-color: rgba(5, 5, 5, 0.95); /* Color de fondo rojo oscuro (puedes ajustarlo) */
+
+  color: white; /* Color de texto blanco (puedes ajustarlo) */
+
+  border: 2px;
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+}
+
+
+
+#volverInicio {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+
+
+#volverInicio a.custom-button {
+
+  display: inline-block; /* Hace que el botón se ajuste al texto */
+
+  margin: 10px auto; /* Centrar el botón horizontalmente */
+
+  padding: 5px 10px;
+
+  background-color: rgba(5, 5, 5, 0.95); /* Color de fondo rojo oscuro (puedes ajustarlo) */
+
+  color: white; /* Color de texto blanco (puedes ajustarlo) */
+
+  border: 2px solid; /* Añadí "solid" para especificar el tipo de borde */
+
+  border-radius: 5px;
+
+  cursor: pointer;
+
+  text-decoration: none; /* Quita la decoración de enlace predeterminada */
+
+  font-size: 75%;
+
+}
+
+
+
+#volverInicio a.custom-button:hover {
+
+  background-color: rgba(5, 5, 5, 0.75); /* Cambia el color de fondo al pasar el ratón sobre el botón */
+
+}
+
+
+
+footer {
+
+    background-color: rgba(0, 0, 0, 0.8);
+
+    padding: 10px;
+
+    margin-top: 10px;
+
+    text-align: center;
+
+}
+
+
+
+.footer-content {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+
+.footer-logo img {
+
+    width: 10vw;
+
+    max-width: 100px; /* Ajusta el tamaño del logo según tus preferencias */
+
+    margin-left: 5px;
+
+}
+
+
+
+.footer-links a {
+
+    text-decoration: none;
+
+    margin: 0 5px;
+
+    font-size: 1rem;
+
+    color: white;
+
+    white-space: nowrap;
+
+}
+
+
+
+.footer-copyright {
+
+    margin-top: 10px;
+
+    font-size: 0.8rem;
+
+    color: white;
+
+}
+
+
+
+@media all and (min-width: 37.5em) {
+
+    .botonBlog {
+
+        width: 150px;
+
+    }
+
+
+
+    .footer-logo img {
+
+        width: 50px;
+
+    }
+
+
+
+    img {
+
+        width: 380px;
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+        display: block; /* Asegura que la imagen sea un bloque para que los márgenes automáticos funcionen correctamente */
+
+        border-radius: 10px;
+
+    }
+
+
+
+    .video-containerX {
+
+        border-radius: 10px;
+
+    }
+
+
+
+    .video-containerX iframe {
+
+        border-radius: 10px;
+
+    }
+
+
+
+    nav {
+
+        margin-bottom: 15px;
+
+    }
+
+    }
