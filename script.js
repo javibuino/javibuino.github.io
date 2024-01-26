@@ -1,5 +1,5 @@
-const dropdownButton = document.querySelector(".dropdown-button");
-const dropdownMenu = document.querySelector(".dropdown-menu");
+const dropdownButton = document.querySelector(".menubutton");
+const dropdownMenu = document.querySelector(".menu");
 
 dropdownButton.addEventListener("click", () => {
   dropdownMenu.classList.toggle("show");
